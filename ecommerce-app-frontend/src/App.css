@@ -89,3 +89,15 @@ a{
 
 
 /*End of header styles */
+
+/* Footer Part */
+
+footer{
+  background-color:var(--color-232f3e);
+}
+
+footer:not(:first-child){
+  border-top:1px solid solid rgba(255, 255, 255, 0.1);
+}
+
+/*End of Footer Part */
