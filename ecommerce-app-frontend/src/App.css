@@ -8,6 +8,7 @@
   --color-3b4149 :#3b4149;
   --color-febd69:#febd69;
   --color-232f3e:#232f3e;
+  --color-bf4800:#bf4800;
 }
 
 body{
@@ -30,6 +31,18 @@ a{
 }
 .gap-30{
   gap:30px;
+}
+.button{
+  background-color: var(--color-232f3e);
+  color: white;
+  font-size: 14px;
+  padding: 13px 33px;
+  border-radius: 30px;
+}
+
+.button:hover{
+  background-color: var(--color-febd69);
+  color:#131921;
 }
 
 
@@ -107,3 +120,69 @@ footer .input-group-text{
 }
 
 /*End of Footer Part */
+
+/*Home Page*/
+.main-banner-content {
+ top: 5%;
+ left: 5%;
+}
+
+.main-banner-content h4{
+  color:var(--color-bf4800);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.main-banner-content h5{
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 54px;
+  text-transform: none;
+  letter-spacing: -2px;
+}
+
+.main-banner-content p{
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+
+}
+
+/*small*/
+
+.small-banner-content {
+ top:25%;
+ left: 10%;
+}
+.small-banner-content h4{
+  color:var(--color-bf4800);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.small-banner-content h5{
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 34px;
+  text-transform: none;
+  letter-spacing: -2px;
+}
+
+.small-banner-content p{
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+
+}
+
+/*End Home Page*/
