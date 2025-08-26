@@ -100,4 +100,10 @@ footer:not(:first-child){
   border-top:1px solid solid rgba(255, 255, 255, 0.1);
 }
 
+footer .input-group-text{
+  background-color: var(--color-232f3e);
+  color: white;
+  padding: 8px 17px;
+}
+
 /*End of Footer Part */
