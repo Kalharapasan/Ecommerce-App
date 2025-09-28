@@ -17,7 +17,6 @@ const App = () => {
           <Route path='/' element={<Home />} />
         </Routes>
       </div>
-      {/* ✅ Fixed: Footer should show when NOT seller path */}
       {!isSellerPath && <Footer />}
     </div>
   )
