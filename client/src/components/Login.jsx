@@ -1,13 +1,27 @@
 import React from 'react'
+import { useAppContext } from '../context/AppContext';
 
 const Login = () => {
+
+    const {setShowUserLogin,setUser} = useAppContext();
+
     const [state, setState] = React.useState("login");
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
+    const onSubmitHandler =async (event) =>{
+      event.preventDefault();
+      setUser({
+        email:"test@greatstack.dev",
+        name:"GreatStack"
+      });
+      setShowUserLogin(false);
+    }
+
     return (
-        <form className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white">
+      <div onClick={()=> setShowUserLogin(false)} className='fixed top-0 bottom-0 left-0 right-0 z-30 flex items-center text-sm text-gray-600 bg-black/50'>
+        <form onSubmit={onSubmitHandler} onClick={(e)=>e.stopPropagation()} className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white">
             <p className="text-2xl font-medium m-auto">
                 <span className="text-indigo-500">User</span> {state === "login" ? "Login" : "Sign Up"}
             </p>
@@ -38,6 +52,8 @@ const Login = () => {
                 {state === "register" ? "Create Account" : "Login"}
             </button>
         </form>
+      </div>
+        
     );
 };
 
