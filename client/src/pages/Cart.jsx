@@ -1,13 +1,25 @@
 import React, { useState } from 'react'
+import { useAppContext } from '../context/AppContext'
+import { dummyAddress } from '../assets/assets'
 
 const Cart = () => {
-    const [showAddress, setShowAddress] = useState(false)
+        const { products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount } = useAppContext()
+        const [cartArray, setCartArray] = useState([])
+        const [addresses, setAddresses] = useState(dummyAddress)
+        const [showAddress, setShowAddress] = useState(false)
+        const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0])
+        const [paymentOption, setPaymentOption] = useState("COD")
 
-    const products = [
-        { name: "Running Shoes", description: ["Lightweight and comfortable", "Breathable mesh upper", "Ideal for jogging and casual wear"], offerPrice: 250, price: 200, quantity: 1, size: 42, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage.png", category: "Footwear", },
-        { name: "Running Shoes", description: ["Lightweight and comfortable", "Breathable mesh upper", "Ideal for jogging and casual wear"], offerPrice: 250, price: 200, quantity: 1, size: 42, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage2.png", category: "Footwear", },
-        { name: "Running Shoes", description: ["Lightweight and comfortable", "Breathable mesh upper", "Ideal for jogging and casual wear"], offerPrice: 250, price: 200, quantity: 1, size: 42, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage3.png", category: "Footwear", },
-    ]
+        const getCart = () => {
+        let tempArray = []
+        for (const key in cartItems) {
+            const product = products.find((item) => item._id === key);
+            product.quantity =cartItems[key]
+            tempArray.push(product)
+        }
+        
+    }   
+   
     return (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
             <div className='flex-1 max-w-4xl'>
@@ -116,4 +128,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default Cart ;
