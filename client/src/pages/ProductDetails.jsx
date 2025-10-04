@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../context/AppContext';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
 
@@ -21,21 +21,25 @@ const ProductDetails = () => {
 
     },[products])
 
-    
+    useEffect(()=>{
+        setThumbnail(product?.image[0]?product.image[0] :null)
+    },[product])
+
+
 
     return product && (
-        <div className="max-w-6xl w-full px-6">
+        <div className="mt-12">
             <p>
-                <span>Home</span> /
-                <span> Products</span> /
-                <span> {product.category}</span> /
-                <span className="text-indigo-500"> {product.name}</span>
+                <Link to={"/"}>Home</Link> /
+                <Link to={"/products"}> Products</Link> /
+                <Link to={'/products/${product.category.toLowerCase()'}> {product.category}</Link> /
+                <Link className="text-indigo-500"> {product.name}</Link>
             </p>
 
             <div className="flex flex-col md:flex-row gap-16 mt-4">
                 <div className="flex gap-3">
                     <div className="flex flex-col gap-3">
-                        {product.images.map((image, index) => (
+                        {product.image.map((image, index) => (
                             <div key={index} onClick={() => setThumbnail(image)} className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer" >
                                 <img src={image} alt={`Thumbnail ${index + 1}`} />
                             </div>
