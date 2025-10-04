@@ -24,6 +24,26 @@ export const AppContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const getCartAmount = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      let itemInfo = products.find((product) => product.product_id === item);
+      if (cartItems[item] > 0) {
+        totalAmount += itemInfo.offerPrice * cartItems[item];
+      }
+    }
+    return Math.floor(totalAmount * 100) / 100;
+  }
+
+ // Get Cart Item Count
+  const getCartCount = () => {
+    let totalCount = 0;
+    for (const item in cartItems) {
+      totalCount += cartItems[item];
+    }
+    return totalCount;
+  }
+
   const addToCart = (itemId) => {
     let cartData = structuredClone(cartItems);
     cartData[itemId] = (cartData[itemId] || 0) + 1;
@@ -37,6 +57,10 @@ export const AppContextProvider = ({ children }) => {
     setCartItems(cartData);
     toast.success("Cart Updated");
   };
+
+ 
+
+ 
 
   const removeFromCart = (itemId) => {
     let cartData = structuredClone(cartItems);
@@ -67,7 +91,10 @@ export const AppContextProvider = ({ children }) => {
     removeFromCart,
     cartItems,
     searchQuery, 
-    setSearchQuery
+    setSearchQuery,
+    getCartCount,
+    getCartAmount
+
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
